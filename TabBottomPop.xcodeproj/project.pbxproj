@@ -13,6 +13,7 @@
 		04DE3D432BD23ECC00E9F430 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DE3D412BD23ECC00E9F430 /* Main.storyboard */; };
 		04DE3D452BD23ECD00E9F430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DE3D442BD23ECD00E9F430 /* Assets.xcassets */; };
 		04DE3D482BD23ECD00E9F430 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04DE3D462BD23ECD00E9F430 /* LaunchScreen.storyboard */; };
+		04DE3D512BD2511500E9F430 /* TabMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DE3D502BD2511500E9F430 /* TabMoreView.swift */; };
 		43516836B5D339E0363011A8 /* Pods_TabBottomPop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FD1ED4E6079D356B8B4E85 /* Pods_TabBottomPop.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		04DE3D442BD23ECD00E9F430 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04DE3D472BD23ECD00E9F430 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04DE3D492BD23ECD00E9F430 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04DE3D502BD2511500E9F430 /* TabMoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabMoreView.swift; sourceTree = "<group>"; };
 		5FCB400D77757D726B0D82D3 /* Pods-TabBottomPop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabBottomPop.debug.xcconfig"; path = "Target Support Files/Pods-TabBottomPop/Pods-TabBottomPop.debug.xcconfig"; sourceTree = "<group>"; };
 		A6FD1ED4E6079D356B8B4E85 /* Pods_TabBottomPop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TabBottomPop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF1B9757D13E1BEE1DF1D61 /* Pods-TabBottomPop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TabBottomPop.release.xcconfig"; path = "Target Support Files/Pods-TabBottomPop/Pods-TabBottomPop.release.xcconfig"; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				04DE3D3B2BD23ECC00E9F430 /* AppDelegate.swift */,
 				04DE3D3D2BD23ECC00E9F430 /* SceneDelegate.swift */,
 				04DE3D3F2BD23ECC00E9F430 /* MainTabViewController.swift */,
+				04DE3D4F2BD2510000E9F430 /* More */,
 				04DE3D412BD23ECC00E9F430 /* Main.storyboard */,
 				04DE3D442BD23ECD00E9F430 /* Assets.xcassets */,
 				04DE3D462BD23ECD00E9F430 /* LaunchScreen.storyboard */,
@@ -74,13 +77,20 @@
 			path = TabBottomPop;
 			sourceTree = "<group>";
 		};
+		04DE3D4F2BD2510000E9F430 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				04DE3D502BD2511500E9F430 /* TabMoreView.swift */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
 		5CCD89B336E2E02256EF34B0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				5FCB400D77757D726B0D82D3 /* Pods-TabBottomPop.debug.xcconfig */,
 				AAF1B9757D13E1BEE1DF1D61 /* Pods-TabBottomPop.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -208,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04DE3D402BD23ECC00E9F430 /* MainTabViewController.swift in Sources */,
+				04DE3D512BD2511500E9F430 /* TabMoreView.swift in Sources */,
 				04DE3D3C2BD23ECC00E9F430 /* AppDelegate.swift in Sources */,
 				04DE3D3E2BD23ECC00E9F430 /* SceneDelegate.swift in Sources */,
 			);
@@ -363,6 +374,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N2UKKTUA47;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TabBottomPop/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -393,6 +405,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N2UKKTUA47;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TabBottomPop/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

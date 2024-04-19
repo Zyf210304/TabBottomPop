@@ -10,6 +10,8 @@ target 'TabBottomPop' do
     pod 'RxCocoa'
     pod 'RxDataSources'
 
+    pod 'SnapKit'
+
   # Pods for TabBottomPop
 
 end
