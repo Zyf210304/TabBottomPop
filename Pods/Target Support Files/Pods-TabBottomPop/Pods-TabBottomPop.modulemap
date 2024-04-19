@@ -1,0 +1,6 @@
+framework module Pods_TabBottomPop {
+  umbrella header "Pods-TabBottomPop-umbrella.h"
+
+  export *
+  module * { export * }
+}
