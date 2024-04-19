@@ -16,6 +16,8 @@ class TabMoreView: UIView {
     
     //数据源
     var actionItems:[MenuItem] = []
+    var itemArr:[ItemView?]? = []
+
 
     private var disposeBag = DisposeBag()
     let frame_width = UIScreen.main.bounds.width
@@ -26,19 +28,15 @@ class TabMoreView: UIView {
         actionItems = items;
         let itemwidth = (frame_width - 50) / 4
         
-        disposeBag = DisposeBag()
-        scrollView!.removeFromSuperview()
-        scrollView = nil
-        
         addScrollView()
         
         for i in items.indices {
-            let itemView = itemView()
-            itemView.setData(item: items[i])
-            scrollView!.addSubview(itemView)
+            let itemView: ItemView? = ItemView()
+            itemView!.setData(item: items[i])
+            scrollView!.addSubview(itemView!)
             let leading = 10 + i % 4 * (Int(itemwidth) + 10)
             let top = i / 4 * (Int(itemwidth) + 10)
-            itemView.snp.makeConstraints { make in
+            itemView!.snp.makeConstraints { make in
                 make.leading.equalTo(leading)
                 make.width.height.equalTo(itemwidth)
                 make.top.equalTo(top)
@@ -49,8 +47,18 @@ class TabMoreView: UIView {
                 print(i)
                 items[i].action()
             }.disposed(by: disposeBag)
-            itemView.addGestureRecognizer(tapItem)
+            itemView!.addGestureRecognizer(tapItem)
+            
+            if itemArr == nil {
+                itemArr = [ItemView]()
+                itemArr!.append(itemView)
 
+            } else {
+                itemArr!.append(itemView)
+
+            }
+
+            
         }
 
         let heightRow = (items.count - 1) / 4  + 1
@@ -193,8 +201,15 @@ class TabMoreView: UIView {
     }
     
     
-    class itemView: UIView {
+    class ItemView: UIView {
         
+        private var itemData:MenuItem = MenuItem(title: "标题", icon: nil) {
+            
+        }
+        
+        deinit {
+            print("释放 \(itemData.title)")
+        }
         let iconImageView: UIImageView = {
             let v = UIImageView()
             v.backgroundColor = UIColor.red
@@ -235,6 +250,7 @@ class TabMoreView: UIView {
         }
         
         func setData(item :MenuItem) {
+            itemData = item
             iconImageView.image = item.icon
             titleLabel.text = item.title
         }
@@ -247,13 +263,21 @@ class TabMoreView: UIView {
         UIView.animate(withDuration: 0.3) {
             
             self.bottomView.snp.updateConstraints { make in
-//                make.top.equalToSuperview().offset(-self.bottomHeight)
                 make.top.equalTo(self.snp.bottom).offset( show ? -self.bottomHeight : 0)
             }
             
             self.layoutIfNeeded()
-        } completion: { _ in
+        } completion: { [self] _ in
             if !show  {
+
+                disposeBag = DisposeBag()
+                
+                if(scrollView != nil) {
+                    scrollView?.removeFromSuperview()
+                }
+                scrollView = nil
+                itemArr = nil
+
                 self.removeFromSuperview()
             }
         }

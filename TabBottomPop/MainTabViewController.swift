@@ -65,7 +65,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
                     
 
                 var items = [TabMoreView.MenuItem]()
-                var number = arc4random() % 14 + 2
+                var number = arc4random() % 14 + 2000
                 print(number)
                 for i in 0 ... number {
                     let item = TabMoreView.MenuItem(title: "标题\(i)", icon: UIImage(named: "111")) { [weak self] in
