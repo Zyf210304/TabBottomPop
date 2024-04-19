@@ -25,7 +25,6 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         toAddController(controllers: &controllers, controller: ContactViewController(), title: "联系人", defalutImg: "", selectedImg: "")
         toAddController(controllers: &controllers, controller: MineViewController(), title: "我的", defalutImg: "", selectedImg: "")
         toAddController(controllers: &controllers, controller: MoreViewController(), title: "更多", defalutImg: "", selectedImg: "")
-        
         initTab(controllers: &controllers)
         
     }
@@ -56,7 +55,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         if viewController == viewControllers?[3] {
             
             if !view.subviews.contains(_moreView) {
-                _moreView.removeFromSuperview()
+//                _moreView.removeFromSuperview()
                 
                 view.addSubview(_moreView)
                 _moreView.snp.makeConstraints { make in
@@ -66,7 +65,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
                     
 
                 var items = [TabMoreView.MenuItem]()
-                var number = arc4random() % 20 + 3
+                var number = arc4random() % 14 + 2
                 print(number)
                 for i in 0 ... number {
                     let item = TabMoreView.MenuItem(title: "标题\(i)", icon: UIImage(named: "111")) { [weak self] in
@@ -82,7 +81,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
             return false
         }
         
-        _moreView.removeFromSuperview()
+        _moreView.bottomShow(show: false)
         return true
     }
     

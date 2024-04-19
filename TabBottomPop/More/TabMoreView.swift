@@ -20,6 +20,8 @@ class TabMoreView: UIView {
     private var disposeBag = DisposeBag()
     let frame_width = UIScreen.main.bounds.width
     
+    var bottomHeight = 0
+    
     public func setItems(_ items : [MenuItem]) {
         actionItems = items;
         let itemwidth = (frame_width - 50) / 4
@@ -58,10 +60,12 @@ class TabMoreView: UIView {
         scrollView!.contentSize = CGSize(width: width, height: height - 60)
         
         let bottomHeight = height > 400 ? 400 : height
+        self.bottomHeight = bottomHeight
         
         bottomView.snp.updateConstraints { make in
             make.height.equalTo(bottomHeight)
         }
+        bottomShow(show: true)
     }
     
     lazy var bottomView: UIView = {
@@ -105,21 +109,14 @@ class TabMoreView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        //点解背景消失
-//        let tapBackGround = UITapGestureRecognizer()
-//        tapBackGround.rx.event.subscribe { [weak self] _ in
-//            self?.removeFromSuperview()
-//        }.disposed(by: disposeBag)
-//        addGestureRecognizer(tapBackGround)
-        
-        
-        backgroundColor = .gray.withAlphaComponent(0.3)
+        clipsToBounds = true
+        backgroundColor = .gray.withAlphaComponent(0.05)
         
         
         addSubview(bottomView)
         bottomView.snp.makeConstraints { make in
-            make.leading.bottom.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(self.snp.bottom)
             make.height.equalTo(0)
         }
         bottomView.layer.cornerRadius = 10
@@ -172,7 +169,7 @@ class TabMoreView: UIView {
         let point = touch.location(in: self)
         let tPoint = view.convert(point, from: self)
         if view.point(inside: tPoint, with: event) {return}
-        removeFromSuperview()
+        bottomShow(show: false)
         
     }
     
@@ -243,8 +240,25 @@ class TabMoreView: UIView {
         }
         
     }
+
     
-    
+    func bottomShow(show:Bool) {
+        self.layoutIfNeeded()
+        UIView.animate(withDuration: 0.3) {
+            
+            self.bottomView.snp.updateConstraints { make in
+//                make.top.equalToSuperview().offset(-self.bottomHeight)
+                make.top.equalTo(self.snp.bottom).offset( show ? -self.bottomHeight : 0)
+            }
+            
+            self.layoutIfNeeded()
+        } completion: { _ in
+            if !show  {
+                self.removeFromSuperview()
+            }
+        }
+
+    }
 }
 
 
