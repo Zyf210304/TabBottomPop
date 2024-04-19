@@ -45,7 +45,6 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         tabBar.layer.shadowOpacity = 0.08
         tabBar.layer.shadowOffset = CGSize(width: 0, height: 0)
         tabBar.layer.shadowRadius = 5
-        
         tabBar.backgroundImage = UIImage()
         tabBar.shadowImage = UIImage()
     }
@@ -65,7 +64,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
                     
 
                 var items = [TabMoreView.MenuItem]()
-                var number = arc4random() % 14 + 2000
+                var number = arc4random() % 14 + 2
                 print(number)
                 for i in 0 ... number {
                     let item = TabMoreView.MenuItem(title: "标题\(i)", icon: UIImage(named: "111")) { [weak self] in
