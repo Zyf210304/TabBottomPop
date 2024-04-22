@@ -15,6 +15,7 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         return v
     }()
     
+    var userMoreView = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +55,6 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
         if viewController == viewControllers?[3] {
             
             if !view.subviews.contains(_moreView) {
-//                _moreView.removeFromSuperview()
                 
                 view.addSubview(_moreView)
                 _moreView.snp.makeConstraints { make in
@@ -87,10 +87,12 @@ class MainTabViewController: UITabBarController, UITabBarControllerDelegate {
 }
 
 func getTabBarHeight() -> CGFloat {
+    
     if let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController {
         return tabBarController.tabBar.frame.size.height
     }
     return 0.0
+    
 }
 
 

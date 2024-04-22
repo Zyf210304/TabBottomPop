@@ -178,7 +178,6 @@ class TabMoreView: UIView {
         let tPoint = view.convert(point, from: self)
         if view.point(inside: tPoint, with: event) {return}
         bottomShow(show: false)
-        
     }
     
     
